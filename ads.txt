@@ -1,0 +1,22 @@
+(define (domain ads)
+    (:requirements :strips )
+    (:predicates  (Janela ?obj)
+	          (Porta ?obj)
+		  (Luz ?obj) 
+                  (Sala ?loc)
+		  (Agente ?obj) 
+                  (Local ?obj ?loc)
+		  (Conexao ?obj ?loc ?loc)
+		  (Fechada ?obj)
+                  (Aberta ?obj)		  		 
+                  (Ligada ?obj)		  		 
+                  (Desligada ?obj)		  		 
+                  )
+    
+    (:action mover  :parameters (?porta ?obj ?loc1 ?loc2)
+                    :precondition (and (Agente ?obj)(Porta ?porta)(Sala ?loc1) (Sala ?loc2)(Local ?obj ?loc1)(Conexao ?porta ?loc1 ?loc2)(Aberta ?porta))
+                    :effect (and  (Local ?obj ?loc2) (not  (Local ?obj ?loc1)) )
+    )
+    
+
+)
