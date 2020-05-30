@@ -17,6 +17,13 @@
                     :precondition (and (Agente ?obj)(Porta ?porta)(Sala ?loc1) (Sala ?loc2)(Local ?obj ?loc1)(Conexao ?porta ?loc1 ?loc2)(Aberta ?porta))
                     :effect (and  (Local ?obj ?loc2) (not  (Local ?obj ?loc1)) )
     )
-    
+    (:action desligar  :parameters (?luz ?obj ?loc1)
+                       :precondition (and (Agente ?obj)(Luz ?luz)(Sala ?loc1) (Local ?obj ?loc1) (Local ?luz ?loc1) (Ligada ?luz))
+                       :effect (and  (Desligada ?luz) (not  (Ligada ?luz)) )
+ )
+ (:action fechar_janela  :parameters (?janela ?obj ?loc1)
+                         :precondition (and (Agente ?obj)(Janela ?janela)(Sala ?loc1) (Local ?obj ?loc1) (Local ?janela ?loc1) (Aberta ?janela))
+                         :effect (and  (Fechada ?janela) (not  (Aberta ?janela)) )
+ )
 
 )
